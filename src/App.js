@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Banner from './components/banner';
+import Formulario from './components/formulario';
+import Time from './components/time';
 
 function App() {
+
+  const [funcionarios, setFuncionarios] = useState([])
+
+  const cadastrarfuncionario = (funcionario) => {
+    console.log(funcionario)
+    setFuncionarios([...funcionarios, funcionario])
+
+    
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Banner />
+      <Formulario cadastrarFunc={funcionario => cadastrarfuncionario(funcionario)}/>
+      <Time name="Programação"></Time>
+      <Time name="Frontend"></Time>
+      <Time name="Data Science"></Time>
+    </>
   );
 }
 
